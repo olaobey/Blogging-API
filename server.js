@@ -5,5 +5,5 @@ const CONFIG = require("./config/db.config");
 const server = http.createServer(app);
 
 server.listen(CONFIG.PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+  console.log(`Server listening on ${PORT}.....`);
 });

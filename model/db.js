@@ -5,7 +5,8 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 // connect to mongodb
 function connectToMongoDB() {
-  moogoose.connect(MONGODB_URI);
+  const connectionParams = { useNewUrlparser: true };
+  moogoose.connect(MONGODB_URI, connectionParams);
 
   moogoose.connection.on("connected", () => {
     console.log("Connected to MongoDB successfully");

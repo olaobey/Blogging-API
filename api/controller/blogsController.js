@@ -3,7 +3,7 @@ const blogModel = require("../../model/blogs");
 
 const blogRouter = express.Router();
 
-userRouter.get("/", (req, res) => {
+blogRouter.get("/", (req, res) => {
   userModel
     .find()
     .then((blogs) => {
@@ -18,7 +18,7 @@ userRouter.get("/", (req, res) => {
     });
 });
 
-userRouter.edit("/:id", (req, res) => {
+blogRouter.edit("/:id", (req, res) => {
   const id = req.params.id;
   userModel
     .findById(id)
@@ -34,7 +34,7 @@ userRouter.edit("/:id", (req, res) => {
     });
 });
 
-userRouter.create("/", (req, res) => {
+blogRouter.create("/", (req, res) => {
   const blog = req.body;
   blog.lastUpdateAt = new Date(); // set the lastUpdateAt to the current date
   userModel
@@ -51,7 +51,7 @@ userRouter.create("/", (req, res) => {
     });
 });
 
-userRouter.update("/:id", (req, res) => {
+blogRouter.update("/:id", (req, res) => {
   const id = req.params.id;
   const blog = req.body;
   blog.lastUpdateAt = new Date(); // set the lastUpdateAt to the current date
@@ -69,7 +69,7 @@ userRouter.update("/:id", (req, res) => {
     });
 });
 
-userRouter.delete("/:id", (req, res) => {
+blogRouter.delete("/:id", (req, res) => {
   const id = req.params.id;
   userModel
     .findByIdAndRemove(id)
@@ -85,4 +85,4 @@ userRouter.delete("/:id", (req, res) => {
     });
 });
 
-module.exports = userRouter;
+module.exports = blogRouter;
