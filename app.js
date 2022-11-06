@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+const cors = require("cors");
 const passport = require("passport");
 const usersRoute = require("./api/routes/userRoute");
 const blogsRoute = require("./api/routes/blogRoute");
@@ -7,6 +7,7 @@ const blogsRoute = require("./api/routes/blogRoute");
 const authRouter = require("./api/routes/auth_route");
 const app = express();
 const db = require("./model/db");
+const { response } = require("express");
 require("dotenv").config();
 require("./middleware/auth");
 
@@ -14,6 +15,8 @@ require("./middleware/auth");
 db.connectToMongoDB();
 
 // routes
+app.use(cors());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", authRouter);
 app.use("/users", passport.authenticate("jwt", { session: false }), usersRoute);

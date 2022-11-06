@@ -16,6 +16,7 @@ const blogSchema = new Schema({
   author: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
+    ref: "user",
   },
   state: [
     {
@@ -29,7 +30,7 @@ const blogSchema = new Schema({
     },
   ],
   read_count: {
-    type: mongoose.Schema.Types.integer,
+    type: "number",
     required: true,
     default: 0,
   },
