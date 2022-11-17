@@ -1,17 +1,20 @@
-const { numberParser } = require("config/parser");
 const mongoose = require("mongoose");
+
+//Defining a model and creating a database schema
+//Defining blog schema
 
 const Schema = mongoose.Schema;
 
 const blogSchema = new Schema({
   title: {
     type: "string",
-    required: true,
+    required: [true, "Blog title required"],
+    default: "untitled blog",
     unique: [true, "title must be unique"],
   },
   description: {
     type: "string",
-    required: true,
+    required: [true, "Blog description required"],
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
@@ -21,12 +24,10 @@ const blogSchema = new Schema({
   state: [
     {
       name: { type: "string", required: true },
-      cities: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "state",
-        },
-      ],
+      cities: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "state",
+      },
     },
   ],
   read_count: {
@@ -51,4 +52,5 @@ const blogSchema = new Schema({
   timestamp: { type: "date", required: true },
 });
 
-module.exports = mongoose.model("Blogs", blogSchema);
+const BlogModel = mongoose.model("Blog", blogSchema);
+module.exports = BlogModel;

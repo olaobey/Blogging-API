@@ -1,0 +1,15 @@
+require("dotenv").config();
+
+const CONFIG = {
+  PORT: process.env.PORT || 5000,
+  MONGODB_URL: process.env.MONGODB_URL,
+  TOKEN_SECRET: process.env.TOKEN_SECRET,
+  JWT_EXPIRE_TIME: process.env.JWT_EXPIRE_TIME,
+  NODE_ENV: process.env.NODE_ENV || "development",
+  ACCESS_TOKEN_SECRET_KEY: process.env.ACCESS_TOKEN_SECRET_KEY,
+  ACCESS_TOKEN_KEY_EXPIRE_TIME: process.env.ACCESS_TOKEN_KEY_EXPIRE_TIME,
+  REFRESH_TOKEN_SECRET_KEY: process.env.REFRESH_TOKEN_SECRET_KEY,
+  REFRESH_TOKEN_KEY_EXPIRE_TIME: process.env.REFRESH_TOKEN_KEY_EXPIRE_TIME,
+};
+
+module.exports = CONFIG;

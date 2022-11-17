@@ -5,7 +5,12 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 // connect to mongodb
 function connectToMongoDB() {
-  const connectionParams = { useNewUrlparser: true };
+  const connectionParams = {
+    useNewUrlparser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  };
   moogoose.connect(MONGODB_URI, connectionParams);
 
   moogoose.connection.on("connected", () => {
